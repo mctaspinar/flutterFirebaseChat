@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_app_chat/models/users.dart';
-import 'package:flutter_app_chat/view_models/user_modelview.dart';
 import 'package:provider/provider.dart';
-import 'chat_screen.dart';
-import 'empty_list_screen.dart';
+
+import '../models/users.dart';
+
+import '../provider/user_modelview.dart';
+
+import './chat_screen.dart';
+import './empty_list_screen.dart';
 
 class AllUsersPage extends StatefulWidget {
   @override

@@ -1,10 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/models/message.dart';
-import 'package:flutter_app_chat/models/users.dart';
-import 'package:flutter_app_chat/view_models/user_modelview.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import '../models/message.dart';
+import '../models/users.dart';
+
+import '../provider/user_modelview.dart';
 
 class Chatting extends StatefulWidget {
   final Users currentUser;

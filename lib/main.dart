@@ -1,11 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/view_models/user_modelview.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-import 'app/landing_page.dart';
-import 'locator.dart';
+import './provider/user_modelview.dart';
+import './app/landing_page.dart';
+import './locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

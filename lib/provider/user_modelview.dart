@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/models/chats.dart';
-import 'package:flutter_app_chat/models/message.dart';
-import 'package:flutter_app_chat/models/users.dart';
-import 'package:flutter_app_chat/repository/user_repository.dart';
-import 'package:flutter_app_chat/services/auth_base.dart';
 
+import '../models/chats.dart';
+import '../models/message.dart';
+import '../models/users.dart';
+import '../repository/user_repository.dart';
+import '../services/auth_base.dart';
 import '../locator.dart';
 
 enum ViewState { Idle, Busy }

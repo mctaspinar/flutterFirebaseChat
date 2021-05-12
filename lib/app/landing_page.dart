@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/view_models/user_modelview.dart';
-
 import 'package:provider/provider.dart';
 
-import 'email_login_page.dart';
-import 'home_page.dart';
+import './email_login_page.dart';
+import './home_page.dart';
+
+import '../provider/user_modelview.dart';
 
 class LandingPage extends StatelessWidget {
   @override

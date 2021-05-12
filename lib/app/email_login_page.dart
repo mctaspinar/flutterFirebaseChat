@@ -1,12 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_app_chat/models/error_exception.dart';
-import 'package:flutter_app_chat/common_widget/alert_dialog.dart';
-import 'package:flutter_app_chat/common_widget/log_in_buttons.dart';
-import 'package:flutter_app_chat/models/users.dart';
-import 'package:flutter_app_chat/view_models/user_modelview.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
+
+import '../common_widget/alert_dialog.dart';
+import '../common_widget/log_in_buttons.dart';
+
+import '../models/error_exception.dart';
+import '../models/users.dart';
+import '../provider/user_modelview.dart';
 
 enum FormType { Register, Login }
 

@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/common_widget/alert_dialog.dart';
-import 'package:flutter_app_chat/common_widget/log_in_buttons.dart';
-import 'package:flutter_app_chat/view_models/user_modelview.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../common_widget/alert_dialog.dart';
+import '../common_widget/log_in_buttons.dart';
+import '../provider/user_modelview.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
