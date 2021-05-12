@@ -1,16 +1,16 @@
-# flutter_app_chat
+# Flutter Chat APP
 
-A new Flutter application.
+It is an example of chat application and there is basic usage of firebase.
 
-## Getting Started
+**Used Packages**
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [firebase_auth](https://pub.dev/packages/firebase_auth)
+- [firebase_core](https://pub.dev/packages/firebase_core)
+- [firebase_storage](https://pub.dev/packages/firebase_storage)
+- [cloud_firestore](https://pub.dev/packages/cloud_firestore)
+- [google_sign_in](https://pub.dev/packages/google_sign_in)
+- [image_picker](https://pub.dev/packages/image_picker)
+- [get_it](https://pub.dev/packages/get_it)
+- [provider](https://pub.dev/packages/provider)
+- [intl](https://pub.dev/packages/intl)
+- [timeago](https://pub.dev/packages/timeago)
