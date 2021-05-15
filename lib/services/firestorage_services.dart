@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:flutter_app_chat/services/storage_base.dart';
+
+import '../services/storage_base.dart';
 
 class FireStorageService implements StorageBase {
   final firebase_storage.FirebaseStorage _firebaseStorage =

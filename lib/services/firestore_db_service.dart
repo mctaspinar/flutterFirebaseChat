@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_app_chat/models/chats.dart';
-import 'package:flutter_app_chat/models/message.dart';
-import 'package:flutter_app_chat/models/users.dart';
-import 'package:flutter_app_chat/services/db_base.dart';
+
+import '../models/chats.dart';
+import '../models/message.dart';
+import '../models/users.dart';
+
+import '../services/db_base.dart';
 
 class FireStoreDBService implements DBBase {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -55,17 +57,6 @@ class FireStoreDBService implements DBBase {
         .update({"profilePic": profilePhotoURL});
     return true;
   }
-
-  // @override
-  // Future<List<Users>> allUsers() async {
-  //   QuerySnapshot snapshot = await _firestore.collection("users").get();
-  //   List<Users> userList = [];
-  //   for (DocumentSnapshot user in snapshot.docs) {
-  //     Users _user = Users.fromMap(user.data());
-  //     userList.add(_user);
-  //   }
-  //   return userList;
-  // }
 
   @override
   Stream<List<Message>> getMessages(String toUser, String fromUser) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './email_login_page.dart';
-import './home_page.dart';
+import '../app/email_login_page.dart';
+import '../app/home_page.dart';
 
 import '../provider/user_modelview.dart';
 

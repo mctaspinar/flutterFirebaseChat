@@ -6,8 +6,8 @@ import '../models/users.dart';
 
 import '../provider/user_modelview.dart';
 
-import './chat_screen.dart';
-import './empty_list_screen.dart';
+import '../app/chat_screen.dart';
+import '../app/empty_list_screen.dart';
 
 class ChatsPage extends StatefulWidget {
   @override

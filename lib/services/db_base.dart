@@ -1,6 +1,6 @@
-import 'package:flutter_app_chat/models/chats.dart';
-import 'package:flutter_app_chat/models/message.dart';
-import 'package:flutter_app_chat/models/users.dart';
+import '../models/chats.dart';
+import '../models/message.dart';
+import '../models/users.dart';
 
 abstract class DBBase {
   Future<bool> saveUser(Users users);

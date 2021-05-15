@@ -1,13 +1,16 @@
 import 'dart:io';
-import 'package:flutter_app_chat/models/chats.dart';
-import 'package:flutter_app_chat/models/message.dart';
-import 'package:flutter_app_chat/models/users.dart';
-import 'package:flutter_app_chat/services/auth_base.dart';
-import 'package:flutter_app_chat/services/fake_auth_service.dart';
-import 'package:flutter_app_chat/services/firebase_auth_service.dart';
-import 'package:flutter_app_chat/services/firestorage_services.dart';
-import 'package:flutter_app_chat/services/firestore_db_service.dart';
+
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../models/chats.dart';
+import '../models/message.dart';
+import '../models/users.dart';
+
+import '../services/auth_base.dart';
+import '../services/fake_auth_service.dart';
+import '../services/firebase_auth_service.dart';
+import '../services/firestorage_services.dart';
+import '../services/firestore_db_service.dart';
 
 import '../locator.dart';
 

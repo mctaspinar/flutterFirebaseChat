@@ -1,6 +1,6 @@
-import 'package:flutter_app_chat/models/users.dart';
+import '../models/users.dart';
 
-import 'auth_base.dart';
+import '../services/auth_base.dart';
 
 class FakeAuthService extends AuthBase {
   @override
@@ -10,8 +10,8 @@ class FakeAuthService extends AuthBase {
 
   @override
   Future<Users> signInAnonym() async {
-    return await Future.delayed(
-        Duration(seconds: 2), () => Users(userId: "anonym_asda",eMail: "fakeMail"));
+    return await Future.delayed(Duration(seconds: 2),
+        () => Users(userId: "anonym_asda", eMail: "fakeMail"));
   }
 
   @override
@@ -20,20 +20,20 @@ class FakeAuthService extends AuthBase {
   }
 
   @override
-  Future<Users> signInWithGoogle() async{
-    return await Future.delayed(
-        Duration(seconds: 2), () => Users(userId: "google_asda",eMail: "fakeMail"));
+  Future<Users> signInWithGoogle() async {
+    return await Future.delayed(Duration(seconds: 2),
+        () => Users(userId: "google_asda", eMail: "fakeMail"));
   }
 
   @override
-  Future<Users> creatUserWithEmailandPass(String eMail, String pass) async{
-    return await Future.delayed(
-        Duration(seconds: 2), () => Users(userId: "create_user_asda",eMail: "fakeMail"));
+  Future<Users> creatUserWithEmailandPass(String eMail, String pass) async {
+    return await Future.delayed(Duration(seconds: 2),
+        () => Users(userId: "create_user_asda", eMail: "fakeMail"));
   }
 
   @override
-  Future<Users> signInWithEmailandPass(String eMail, String pass) async{
-    return await Future.delayed(
-        Duration(seconds: 2), () => Users(userId: "signin_user_asda",eMail: "fakeMail"));
+  Future<Users> signInWithEmailandPass(String eMail, String pass) async {
+    return await Future.delayed(Duration(seconds: 2),
+        () => Users(userId: "signin_user_asda", eMail: "fakeMail"));
   }
 }

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_app_chat/common_widget/widget_base.dart';
+import '../common_widget/widget_base.dart';
 
 class CustomAlertDialog extends WidgetBase {
   final String title;
