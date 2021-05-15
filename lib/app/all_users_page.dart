@@ -30,13 +30,13 @@ class _AllUsersPageState extends State<AllUsersPage> {
       getUser();
     });
 
+    //minScrollExtent listenin sonuna geldiğinde
+    //maxScrollExtent listenin başına geldiğinde
     _scrollController.addListener(() {
-      if (_scrollController.position.atEdge) {
-        if (_scrollController.position == 0) {
-          print("Liste tepesi");
-        } else {
-          getUser();
-        }
+      if (_scrollController.offset >=
+              _scrollController.position.maxScrollExtent &&
+          !_scrollController.position.outOfRange) {
+        getUser();
       }
     });
   }
@@ -147,7 +147,6 @@ class _AllUsersPageState extends State<AllUsersPage> {
     }
 
     _lastUserInfo = _allUsers.last;
-    await Future.delayed(Duration(milliseconds: 500));
     setState(() {
       _isLoading = false;
     });
