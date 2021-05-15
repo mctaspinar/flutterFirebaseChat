@@ -44,6 +44,9 @@ class _AllUsersPageState extends State<AllUsersPage> {
               return RefreshIndicator(
                 onRefresh: model.refreshList,
                 child: ListView.builder(
+                    physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
+                    primary: false,
                     controller: _scrollController,
                     itemCount: model.hasMore
                         ? model.allUserList.length + 1
