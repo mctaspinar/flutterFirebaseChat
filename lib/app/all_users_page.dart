@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter_app_chat/provider/all_user_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../models/users.dart';
 
 import '../provider/user_view_model.dart';
 
@@ -15,147 +13,114 @@ class AllUsersPage extends StatefulWidget {
 }
 
 class _AllUsersPageState extends State<AllUsersPage> {
-  List<Users> _allUsers = [];
   bool _isLoading = false;
-  bool _hasMore = true;
-  int _setUserCountFirst = 6;
-  Users _lastUserInfo;
   ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      getUser();
-    });
-
     //minScrollExtent listenin sonuna geldiğinde
     //maxScrollExtent listenin başına geldiğinde
-    _scrollController.addListener(() {
-      if (_scrollController.offset >=
-              _scrollController.position.maxScrollExtent &&
-          !_scrollController.position.outOfRange) {
-        getUser();
-      }
-    });
+    _scrollController.addListener(_scrollListener);
   }
 
   @override
   Widget build(BuildContext context) {
     final _userModel = Provider.of<UserModel>(context, listen: false);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Kişiler",
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: _allUsers.length == 0
-                ? RefreshIndicator(
-                    onRefresh: _refreshList,
-                    child: SingleChildScrollView(
-                      physics: AlwaysScrollableScrollPhysics(),
-                      child: EmptyListScreen(
-                        iconData: Icons.people,
-                        message: "Henüz kişi listeniz boş..",
-                      ),
-                    ),
-                  )
-                : RefreshIndicator(
-                    onRefresh: _refreshList,
-                    child: ListView.builder(
-                        physics: const BouncingScrollPhysics(
-                            parent: AlwaysScrollableScrollPhysics()),
-                        primary: false,
-                        controller: _scrollController,
-                        itemCount: _allUsers.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index == _allUsers.length) {
-                            return _isLoading
-                                ? Padding(
-                                    padding: const EdgeInsets.all(12),
-                                    child: Center(
-                                      child: Text(
-                                        "Yükleniyor...",
-                                        style: TextStyle(
-                                            color: Colors.grey[300],
-                                            fontSize: 18),
-                                      ),
-                                    ),
-                                  )
-                                : null;
-                          }
-
-                          if (_allUsers[index].userId ==
-                              _userModel.users.userId) {
-                            return Container();
-                          }
-
-                          return Card(
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                  _allUsers[index].profilePic,
-                                ),
-                              ),
-                              title: Text(_allUsers[index].userName),
-                              subtitle: Text(_allUsers[index].eMail),
-                              onTap: () =>
-                                  Navigator.of(context, rootNavigator: true)
-                                      .push(MaterialPageRoute(
-                                          builder: (context) => Chatting(
-                                                currentUser: _userModel.users,
-                                                chatUser: _allUsers[index],
-                                              ))),
-                            ),
-                          );
-                        }),
-                  ),
+        appBar: AppBar(
+          title: Text(
+            "Kişiler",
+            style: TextStyle(fontSize: 24),
           ),
-          _isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container(),
-        ],
-      ),
-    );
+        ),
+        body: Consumer<AllUserModel>(
+          builder: (context, model, _) {
+            if (model.state == AllUserViewState.Busy) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (model.state == AllUserViewState.Loaded) {
+              return RefreshIndicator(
+                onRefresh: model.refreshList,
+                child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: model.hasMore
+                        ? model.allUserList.length + 1
+                        : model.allUserList.length,
+                    itemBuilder: (context, index) {
+                      if (model.allUserList.length == 0) {
+                        return Expanded(
+                          child: RefreshIndicator(
+                            onRefresh: model.refreshList,
+                            child: SingleChildScrollView(
+                              physics: AlwaysScrollableScrollPhysics(),
+                              child: EmptyListScreen(
+                                iconData: Icons.people,
+                                message: "Henüz kişi listeniz boş..",
+                              ),
+                            ),
+                          ),
+                        );
+                      } else if (model.hasMore &&
+                          index == model.allUserList.length) {
+                        return Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Center(
+                            child: Text(
+                              "Diğer kullanıcıları görmek için yukarı kaydırın!",
+                              style: TextStyle(
+                                  color: Colors.grey[400], fontSize: 18),
+                            ),
+                          ),
+                        );
+                      } else if (model.allUserList[index].userId ==
+                          _userModel.users.userId) {
+                        return Container();
+                      } else {
+                        return Card(
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                model.allUserList[index].profilePic,
+                              ),
+                            ),
+                            title: Text(model.allUserList[index].userName),
+                            subtitle: Text(model.allUserList[index].eMail),
+                            onTap: () => Navigator.of(context,
+                                    rootNavigator: true)
+                                .push(MaterialPageRoute(
+                                    builder: (context) => Chatting(
+                                          currentUser: _userModel.users,
+                                          chatUser: model.allUserList[index],
+                                        ))),
+                          ),
+                        );
+                      }
+                    }),
+              );
+            } else {
+              return Container();
+            }
+          },
+        ));
   }
 
-  getUser() async {
-    final _userModel = Provider.of<UserModel>(context, listen: false);
-
-    if (!_hasMore) return;
-    if (_isLoading) return;
-    setState(() {
+  void loadMoreUser() async {
+    if (_isLoading == false) {
       _isLoading = true;
-    });
-    List<Users> users =
-        await _userModel.getUserPaging(_lastUserInfo, _setUserCountFirst);
-    if (_allUsers == null) {
-      _allUsers = [];
-      _allUsers.addAll(users);
-    } else {
-      _allUsers.addAll(users);
-    }
-    if (users.length < _setUserCountFirst) {
-      _hasMore = false;
-    }
-
-    _lastUserInfo = _allUsers.last;
-    setState(() {
+      final _allUserViewModel =
+          Provider.of<AllUserModel>(context, listen: false);
+      await _allUserViewModel.loadMoreUser();
       _isLoading = false;
-    });
+    }
   }
 
-  Future<Null> _refreshList() async {
-    _allUsers = [];
-    _hasMore = true;
-    _lastUserInfo = null;
-    getUser();
+  void _scrollListener() {
+    if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      loadMoreUser();
+    }
   }
 }

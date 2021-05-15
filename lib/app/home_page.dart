@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/users.dart';
+
+import '../provider/all_user_view_model.dart';
 
 import '../app/custom_buttom_navi.dart';
 import '../app/tab_items.dart';
@@ -27,7 +30,10 @@ class _HomePageState extends State<HomePage> {
 
   Map<TabItems, Widget> allPages() {
     return {
-      TabItems.AllUsers: AllUsersPage(),
+      TabItems.AllUsers: ChangeNotifierProvider(
+        create: (context) => AllUserModel(),
+        child: AllUsersPage(),
+      ),
       TabItems.Chats: ChatsPage(),
       TabItems.Profile: ProfilePage(),
     };
