@@ -8,7 +8,7 @@ import '../common_widget/log_in_buttons.dart';
 
 import '../models/error_exception.dart';
 import '../models/users.dart';
-import '../provider/user_modelview.dart';
+import '../provider/user_view_model.dart';
 
 enum FormType { Register, Login }
 

@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../common_widget/alert_dialog.dart';
 import '../common_widget/log_in_buttons.dart';
-import '../provider/user_modelview.dart';
+import '../provider/user_view_model.dart';
 
 class ProfilePage extends StatefulWidget {
   @override

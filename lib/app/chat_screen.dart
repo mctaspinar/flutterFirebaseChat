@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../models/message.dart';
 import '../models/users.dart';
 
-import '../provider/user_modelview.dart';
+import '../provider/user_view_model.dart';
 
 class Chatting extends StatefulWidget {
   final Users currentUser;

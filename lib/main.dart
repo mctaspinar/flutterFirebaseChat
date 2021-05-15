@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-import './provider/user_modelview.dart';
+import 'provider/user_view_model.dart';
 import './app/landing_page.dart';
 import './locator.dart';
 

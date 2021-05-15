@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../models/users.dart';
 
-import '../provider/user_modelview.dart';
+import '../provider/user_view_model.dart';
 
 import '../app/chat_screen.dart';
 import '../app/empty_list_screen.dart';
