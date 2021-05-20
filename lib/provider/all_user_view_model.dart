@@ -39,6 +39,7 @@ class AllUserModel with ChangeNotifier {
       _lastUserInfo = _userList.last;
     }
     if (getNewUsers) {
+      _hasMore = true;
     } else {
       state = AllUserViewState.Busy;
     }
@@ -48,7 +49,6 @@ class AllUserModel with ChangeNotifier {
     if (tempList.length < _getPostCount) {
       _hasMore = false;
     }
-    tempList.forEach((element) {});
     _userList.addAll(tempList);
     state = AllUserViewState.Loaded;
   }
@@ -57,7 +57,6 @@ class AllUserModel with ChangeNotifier {
     if (_hasMore) {
       getUserWithPaging(_lastUserInfo, true);
     } else {}
-    await Future.delayed(Duration(milliseconds: 750));
   }
 
   Future<Null> refreshList() async {

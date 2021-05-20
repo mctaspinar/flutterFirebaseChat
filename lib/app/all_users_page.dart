@@ -53,15 +53,13 @@ class _AllUsersPageState extends State<AllUsersPage> {
                         : model.allUserList.length,
                     itemBuilder: (context, index) {
                       if (model.allUserList.length == 0) {
-                        return Expanded(
-                          child: RefreshIndicator(
-                            onRefresh: model.refreshList,
-                            child: SingleChildScrollView(
-                              physics: AlwaysScrollableScrollPhysics(),
-                              child: EmptyListScreen(
-                                iconData: Icons.people,
-                                message: "Henüz kişi listeniz boş..",
-                              ),
+                        return RefreshIndicator(
+                          onRefresh: model.refreshList,
+                          child: SingleChildScrollView(
+                            physics: AlwaysScrollableScrollPhysics(),
+                            child: EmptyListScreen(
+                              iconData: Icons.people,
+                              message: "Henüz kişi listeniz boş..",
                             ),
                           ),
                         );
