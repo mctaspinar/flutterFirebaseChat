@@ -26,12 +26,11 @@ class LogInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(6),
-              minimumSize: Size(150, 50),
+              minimumSize: Size(200, 50),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(btnRadius),
               ),

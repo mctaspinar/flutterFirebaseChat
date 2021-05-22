@@ -64,6 +64,8 @@ flutter:
     - assets/images/google.png
     - assets/images/face.png
     - assets/images/mail.png
+    - assets/images/twitter.png
+    - assets/images/chat.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
