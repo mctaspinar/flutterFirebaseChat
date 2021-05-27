@@ -80,9 +80,20 @@ class _AllUsersPageState extends State<AllUsersPage> {
                       } else {
                         return Card(
                           child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                model.allUserList[index].profilePic,
+                            leading: Container(
+                              width: 50,
+                              height: 50,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(25),
+                                ),
+                                child: FadeInImage(
+                                  image: NetworkImage(
+                                    model.allUserList[index].profilePic,
+                                  ),
+                                  placeholder:
+                                      AssetImage("assets/images/chat.png"),
+                                ),
                               ),
                             ),
                             title: Text(model.allUserList[index].userName),
