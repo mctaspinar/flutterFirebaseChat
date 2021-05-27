@@ -26,7 +26,7 @@ class Users {
               DateTime.now().month.toString() +
               DateTime.now().day.toString(),
       'profilePic': profilePic ??
-          'https://freepikpsd.com/wp-content/uploads/2019/10/default-profile-image-png-1-Transparent-Images.png',
+          'https://i1.sndcdn.com/avatars-fuFi52Szkbdm16Gg-arzAGQ-t500x500.jpg',
       'createdAt': createdAt ?? FieldValue.serverTimestamp(),
       'updatedAt': updatedAt ?? FieldValue.serverTimestamp(),
       'grade': grade ?? 1,
