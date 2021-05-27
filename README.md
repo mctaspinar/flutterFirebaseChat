@@ -14,3 +14,4 @@ It is an example of chat application and there is basic usage of firebase.
 - [provider](https://pub.dev/packages/provider)
 - [intl](https://pub.dev/packages/intl)
 - [timeago](https://pub.dev/packages/timeago)
+- [shimmer](https://pub.dev/packages/shimmer)

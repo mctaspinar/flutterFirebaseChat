@@ -7,6 +7,7 @@ import '../models/users.dart';
 import '../provider/user_view_model.dart';
 
 import '../app/chat_screen.dart';
+import '../app/loading_page.dart';
 import '../app/empty_list_screen.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -26,9 +27,7 @@ class _ChatsPageState extends State<ChatsPage> {
         future: _userModel.getAllChats(_userModel.users.userId),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return LoadingPage();
           } else {
             var chatList = snapshot.data;
             if (chatList.length > 0) {

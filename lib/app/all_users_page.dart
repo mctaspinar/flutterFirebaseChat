@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/provider/all_user_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/user_view_model.dart';
+import '../provider/all_user_view_model.dart';
 
+import '../app/loading_page.dart';
 import '../app/chat_screen.dart';
 import '../app/empty_list_screen.dart';
 
@@ -37,9 +38,7 @@ class _AllUsersPageState extends State<AllUsersPage> {
         body: Consumer<AllUserModel>(
           builder: (context, model, _) {
             if (model.state == AllUserViewState.Busy) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
+              return LoadingPage();
             } else if (model.state == AllUserViewState.Loaded) {
               return RefreshIndicator(
                 onRefresh: model.refreshList,
