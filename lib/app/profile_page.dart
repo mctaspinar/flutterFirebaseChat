@@ -37,7 +37,10 @@ class _ProfilePageState extends State<ProfilePage> {
     print("profil page: " + _usermodel.users.toString());
     return Scaffold(
       appBar: AppBar(
-        title: Text("${_usermodel.users.userName}"),
+        title: Text(
+          "${_usermodel.users.userName}",
+          style: TextStyle(fontSize: 24),
+        ),
         actions: [
           IconButton(
               icon: Icon(

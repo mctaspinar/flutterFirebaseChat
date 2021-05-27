@@ -21,7 +21,10 @@ class _ChatsPageState extends State<ChatsPage> {
     UserModel _userModel = Provider.of<UserModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sohbetler"),
+        title: Text(
+          "Sohbetler",
+          style: TextStyle(fontSize: 24),
+        ),
       ),
       body: FutureBuilder<List<Chats>>(
         future: _userModel.getAllChats(_userModel.users.userId),
