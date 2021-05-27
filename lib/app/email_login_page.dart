@@ -83,236 +83,231 @@ class _EmailPasswordLogInState extends State<EmailPasswordLogIn> {
     }
 
     return Scaffold(
-        backgroundColor: Colors.grey.shade300,
-        body: _userModel.state == ViewState.Idle
-            ? SingleChildScrollView(
+      backgroundColor: Colors.grey.shade300,
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment(0, -1),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment(0, -1),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          child: Align(
-                              alignment: Alignment(0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Let's Chat!",
-                                    style: TextStyle(
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      letterSpacing: 1,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      bottom: 45,
-                                    ),
-                                    child: Image.asset(
-                                      "assets/images/chat.png",
-                                      height: 75,
-                                      width: 75,
-                                      color: Theme.of(context).accentColor,
-                                    ),
-                                  ),
-                                ],
-                              )),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment(0, 1),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.65,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEEE),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(0),
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Align(
+                      alignment: Alignment(0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Let's Chat!",
+                            style: TextStyle(
+                              fontSize: 36,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              letterSpacing: 1,
                             ),
                           ),
-                          child: Form(
-                            key: _formKey,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 5),
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        prefixIcon: Icon(Icons.email),
-                                        hintText: "E-mail giriniz",
-                                        labelText: "E-mail",
-                                        errorText:
-                                            _userModel.emailErrorMessage != null
-                                                ? _userModel.emailErrorMessage
-                                                : null,
-                                        border: OutlineInputBorder(),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                        ),
-                                        filled: true,
-                                      ),
-                                      onSaved: (value) {
-                                        setState(() {
-                                          email = value;
-                                        });
-                                      },
-                                    ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 45,
+                            ),
+                            child: Image.asset(
+                              "assets/images/chat.png",
+                              height: 75,
+                              width: 75,
+                              color: Theme.of(context).accentColor,
+                            ),
+                          ),
+                        ],
+                      )),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0, 1),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.65,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEEEEEE),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0),
+                      bottomRight: Radius.circular(0),
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.email),
+                                hintText: "E-mail giriniz",
+                                labelText: "E-mail",
+                                errorText: _userModel.emailErrorMessage != null
+                                    ? _userModel.emailErrorMessage
+                                    : null,
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
                                   ),
-                                  SizedBox(
-                                    height: 10,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 5),
-                                    child: TextFormField(
-                                      obscureText: true,
-                                      decoration: InputDecoration(
-                                        errorText:
-                                            _userModel.passErrorMessage != null
-                                                ? _userModel.passErrorMessage
-                                                : null,
-                                        prefixIcon: Icon(Icons.email),
-                                        hintText: "Şifre Giriniz",
-                                        labelText: "Şifre",
-                                        border: OutlineInputBorder(),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                        ),
-                                        filled: true,
-                                      ),
-                                      onSaved: (value) {
-                                        setState(() {
-                                          sifre = value;
-                                        });
-                                      },
-                                    ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
                                   ),
-                                  SizedBox(
-                                    height: 20,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
                                   ),
-                                  LogInButton(
-                                    btnText: butonText,
-                                    btnColor: Theme.of(context).primaryColor,
-                                    btnPressed: () => _formSubmit(context),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 15),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          placeHolderText,
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                        TextButton(
-                                          onPressed: () => _changeText(),
-                                          child: Text(
-                                            linkText,
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Text(
-                                    'Sosyal Medya ile Giriş Yap',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SocialButton(
-                                        imgPath: ("assets/images/google.png"),
-                                        clickFunc: () => _googleGiris(context),
-                                      ),
-                                      SocialButton(
-                                        imgPath: ("assets/images/face.png"),
-                                      ),
-                                      SocialButton(
-                                        imgPath: ("assets/images/twitter.png"),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                ),
+                                filled: true,
                               ),
+                              onSaved: (value) {
+                                setState(() {
+                                  email = value;
+                                });
+                              },
                             ),
                           ),
-                        ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: TextFormField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                errorText: _userModel.passErrorMessage != null
+                                    ? _userModel.passErrorMessage
+                                    : null,
+                                prefixIcon: Icon(Icons.email),
+                                hintText: "Şifre Giriniz",
+                                labelText: "Şifre",
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                filled: true,
+                              ),
+                              onSaved: (value) {
+                                setState(() {
+                                  sifre = value;
+                                });
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          _userModel.state == ViewState.Idle
+                              ? LogInButton(
+                                  btnText: butonText,
+                                  btnColor: Theme.of(context).primaryColor,
+                                  btnPressed: () => _formSubmit(context),
+                                )
+                              : CircularProgressIndicator(),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  placeHolderText,
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () => _changeText(),
+                                  child: Text(
+                                    linkText,
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Text(
+                            'Sosyal Medya ile Giriş Yap',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SocialButton(
+                                imgPath: ("assets/images/google.png"),
+                                clickFunc: () => _googleGiris(context),
+                              ),
+                              SocialButton(
+                                imgPath: ("assets/images/face.png"),
+                              ),
+                              SocialButton(
+                                imgPath: ("assets/images/twitter.png"),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              ));
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _googleGiris(BuildContext context) async {
